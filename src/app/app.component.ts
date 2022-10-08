@@ -11,6 +11,7 @@ export class AppComponent {
 
   sourceList: Satellite[];
   displayList: Satellite[];
+  typesList: string[] = [];
 
 	constructor() {
 		this.sourceList = [];
@@ -27,7 +28,12 @@ export class AppComponent {
 					let satellite = new Satellite(fetchedSatellites[i].name, fetchedSatellites[i].type, fetchedSatellites[i].launchDate, fetchedSatellites[i].orbitType, fetchedSatellites[i].operational);
 					// add the new Satellite object to sourceList 
 					this.sourceList.push(satellite);
+					//adds new types to an array
+					if(!this.typesList.includes(fetchedSatellites[i].type)) {
+						this.typesList.push(fetchedSatellites[i].type)
+					}
 				 }
+				 console.log(this.typesList)
 
 				 // make a copy of the sourceList to be shown to the user
 				 this.displayList = this.sourceList.slice(0);
