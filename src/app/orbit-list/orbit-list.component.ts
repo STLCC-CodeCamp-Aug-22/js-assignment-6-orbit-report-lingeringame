@@ -11,11 +11,13 @@ export class OrbitListComponent implements OnInit {
 
   @Input() satellites: Satellite[];
   constructor() { }
+  classDeterminer: boolean = false;
 
   ngOnInit() {
   }
 
 	sort(column: string): void {
+		console.log(column);
 		// array.sort modifies the array, sorting the items based on the given compare function
 		this.satellites.sort(function (a: Satellite, b: Satellite): number {
 			if (a[column] < b[column]) {
@@ -25,6 +27,14 @@ export class OrbitListComponent implements OnInit {
 			}
 			return 0;
 		});
+	}
+	returnClass() {
+		this.classDeterminer = !this.classDeterminer
+		if(this.classDeterminer) {
+			return 'even';
+		} else {
+			return 'odd'
+		}
 	}
 
 }
